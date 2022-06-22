@@ -147,3 +147,11 @@ body {
 .modal-body {
   position: relative;
 }
+
+.button-center {
+  display: flex;
+  position: relative;
+  height: 500;
+  align-items: center;
+  justify-content: center;
+}

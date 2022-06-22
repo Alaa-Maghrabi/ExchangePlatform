@@ -76,7 +76,16 @@ function App() {
           </Typography>
         </div>
         <Exchanger />
-        <div className={`${classes.grid} ${classes.bigSpace}`}>
+        <div className={classes.bigSpace}>
+          <Footer/>
+        </div>
+      </ThemeProvider>
+    </div>
+  );
+}
+
+/*
+<div className={`${classes.grid} ${classes.bigSpace}`}>
           <Grid icon={<SecurityIcon style={{fill: "#4360A6", height:"125", width:"125"}}/>}  title="Secure" btnTitle="Show me More" />
           <Grid icon={<EventNoteIcon style={{fill: "#449A76", height:"125", width:"125"}}/>} title="Reliable" btnTitle="Show me More"/>
           <Grid icon={<TrendingUpIcon style={{fill: "#D05B2D", height:"125", width:"125"}}/>}  title="Performant" btnTitle="Show me More"/>
@@ -86,12 +95,5 @@ function App() {
           <Grid icon={<ComputerIcon style={{fill: "#E69426", height:"125", width:"125"}}/>}  title="Multi-Platform" btnTitle="Show me More"/>
           <Grid icon={<HttpIcon style={{fill: "#2EA09D", height:"125", width:"125"}}/>} title="Connected" btnTitle="Show me More"/>
         </div>
-        <div className={classes.bigSpace}>
-          <Footer/>
-        </div>
-      </ThemeProvider>
-    </div>
-  );
-}
-
+        */
 export default App;

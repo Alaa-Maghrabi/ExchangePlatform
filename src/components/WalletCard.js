@@ -64,22 +64,23 @@ const WalletCard = () =>{
             console.log(error);
             });
         }
-        accounthandler(user)
-        setShowResults(!showResults);
+        await accounthandler(user)
+        if(user) setShowResults(!showResults);
     }
 
     async function accounthandler(account) {
-        console.log(account);
+        
         const acc_address = account.get("ethAddress");
         setDefaultAccount(acc_address);
         
         const balance = await Moralis.Web3API.account.getNativeBalance({chain: "rinkeby"}); 
         setUserBalance((balance.balance/10**18).toFixed(3));
-        
-        setConnButtonText((defaultAccount.substring(0,6)).concat(
+
+        console.log(acc_address);
+        setConnButtonText((acc_address.substring(0,6)).concat(
             " . . . ", 
-            (defaultAccount.substring(defaultAccount.length-6,defaultAccount.length))
-        ));               
+            (acc_address.substring(acc_address.length-6,acc_address.length))
+        ));              
     }
 
 
