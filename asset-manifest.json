@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ExchangePlatform/static/css/main.46b9e0a9.chunk.css",
+    "main.js": "/ExchangePlatform/static/js/main.07ed07dd.chunk.js",
+    "main.js.map": "/ExchangePlatform/static/js/main.07ed07dd.chunk.js.map",
+    "runtime-main.js": "/ExchangePlatform/static/js/runtime-main.b024d84a.js",
+    "runtime-main.js.map": "/ExchangePlatform/static/js/runtime-main.b024d84a.js.map",
+    "static/js/2.c0a02665.chunk.js": "/ExchangePlatform/static/js/2.c0a02665.chunk.js",
+    "static/js/2.c0a02665.chunk.js.map": "/ExchangePlatform/static/js/2.c0a02665.chunk.js.map",
+    "static/js/3.2036681f.chunk.js": "/ExchangePlatform/static/js/3.2036681f.chunk.js",
+    "static/js/3.2036681f.chunk.js.map": "/ExchangePlatform/static/js/3.2036681f.chunk.js.map",
+    "index.html": "/ExchangePlatform/index.html",
+    "static/css/main.46b9e0a9.chunk.css.map": "/ExchangePlatform/static/css/main.46b9e0a9.chunk.css.map",
+    "static/js/2.c0a02665.chunk.js.LICENSE.txt": "/ExchangePlatform/static/js/2.c0a02665.chunk.js.LICENSE.txt",
+    "static/media/logo.7f799ddd.svg": "/ExchangePlatform/static/media/logo.7f799ddd.svg",
+    "static/media/logoMobile.1b06bd40.svg": "/ExchangePlatform/static/media/logoMobile.1b06bd40.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b024d84a.js",
+    "static/js/2.c0a02665.chunk.js",
+    "static/css/main.46b9e0a9.chunk.css",
+    "static/js/main.07ed07dd.chunk.js"
+  ]
+}
