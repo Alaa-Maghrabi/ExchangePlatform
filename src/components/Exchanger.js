@@ -287,7 +287,7 @@ class Exchanger extends React.Component {
       }
 
       render(){
-        this.setState({currentUser: this.props.user})
+        this.state.currentUser = this.props.user;
         return ( 
             <div className= "gallery-container">
                 <div className="gallery-grid">
