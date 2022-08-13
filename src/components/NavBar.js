@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
-import CustomBtn from './CustomBtn'
+import React from 'react'
 import logo from '../logo.svg'
 import logoMobile from '../logoMobile.svg'
-import {Container, Toolbar, Typography} from '@material-ui/core'
+import {Toolbar, Typography} from '@material-ui/core'
 import {withStyles} from "@material-ui/core/styles"; 
 import WalletCard from './WalletCard'
 
