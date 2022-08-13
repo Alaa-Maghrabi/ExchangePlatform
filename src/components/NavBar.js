@@ -3,10 +3,10 @@ import CustomBtn from './CustomBtn'
 import logo from '../logo.svg'
 import logoMobile from '../logoMobile.svg'
 import {Container, Toolbar, Typography} from '@material-ui/core'
-import {makeStyles} from "@material-ui/core/styles"; 
+import {withStyles} from "@material-ui/core/styles"; 
 import WalletCard from './WalletCard'
 
-const styles = makeStyles({
+const useStyles = {
     bar:{
         paddingTop: "1.15rem",
         backgroundColor: "#fff",
@@ -36,29 +36,44 @@ const styles = makeStyles({
         ['@media (max-width:780px)']: { 
             paddingBottom: "1rem"    }
     }
-})
-
-function NavBar() {
-    const classes = styles()
-    return (
-            <Toolbar position="sticky" color="rgba(0, 0, 0, 0.87)" className={classes.bar}>   
-                <img src={logo} className={classes.logo}/> 
-                <img src={logoMobile} className={classes.logoMobile}/> 
-                <Typography variant="h6" className={classes.menuItem}>
-                   About
-                </Typography>
-                <Typography variant="h6" className={classes.menuItem}>
-                    Blog
-                </Typography>
-                <Typography variant="h6" className={classes.menuItem}>
-                    Demos 
-                </Typography>
-                <Typography variant="h6" className={classes.menuItem}>
-                    Contact Us 
-                </Typography>
-                <WalletCard/>
-            </Toolbar>
-    )
 }
 
-export default NavBar
+class NavBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleUserChange = this.handleUserChange.bind(this);
+        this.state = {currentUser: null};
+      }
+
+    handleUserChange(user_){
+        this.setState({currentUser: user_});
+        this.props.onFinalUserChange(this.state.currentUser);
+      }
+
+    render(){
+        const { classes } = this.props;
+        
+        return (
+                <Toolbar position="sticky" color="rgba(0, 0, 0, 0.87)" className={classes.bar}>   
+                    <img src={logo} className={classes.logo}/> 
+                    <img src={logoMobile} className={classes.logoMobile}/> 
+                    <Typography variant="h6" className={classes.menuItem}>
+                    About
+                    </Typography>
+                    <Typography variant="h6" className={classes.menuItem}>
+                        Blog
+                    </Typography>
+                    <Typography variant="h6" className={classes.menuItem}>
+                        Demos 
+                    </Typography>
+                    <Typography variant="h6" className={classes.menuItem}>
+                        Contact Us 
+                    </Typography>
+                    <WalletCard
+                        onUserChange={this.handleUserChange}/>
+                </Toolbar>
+        )
+    }
+}
+
+export default withStyles(useStyles)(NavBar)

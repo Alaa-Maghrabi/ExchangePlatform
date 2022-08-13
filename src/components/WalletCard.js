@@ -35,7 +35,7 @@ const styles = makeStyles({
 
 const Moralis = require('moralis');
 
-const WalletCard = () =>{
+const WalletCard = (props) =>{
 
     const classes = styles();
 
@@ -55,7 +55,7 @@ const WalletCard = () =>{
     async function login() {
         let user = Moralis.User.current();
         if (!user) {
-        user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
+            user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
             .then(function (user) {
                 console.log("logged in user:", user);
                 console.log(user.get("ethAddress"));
@@ -64,8 +64,10 @@ const WalletCard = () =>{
             console.log(error);
             });
         }
+        
         await accounthandler(user)
         if(user) setShowResults(!showResults);
+        props.onUserChange(user.get("ethAddress"));
     }
 
     async function accounthandler(account) {
@@ -80,7 +82,8 @@ const WalletCard = () =>{
         setConnButtonText((acc_address.substring(0,6)).concat(
             " . . . ", 
             (acc_address.substring(acc_address.length-6,acc_address.length))
-        ));              
+        )); 
+                     
     }
 
 
@@ -90,7 +93,6 @@ const WalletCard = () =>{
         setConnButtonText('Connect Wallet');
     }
     
-
 
     return ( 
         <div className={classes.container}>

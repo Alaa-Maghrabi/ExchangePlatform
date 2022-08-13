@@ -1,18 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider, withStyles} from '@material-ui/core/styles';
 import NavBar from './components/NavBar';
 import Grid from './components/Grid';
 import {Typography} from '@material-ui/core'
 import Footer from './components/Footer';
 import Exchanger from './components/Exchanger';
-
-import SecurityIcon from '@material-ui/icons/Security';
-import EventNoteIcon from '@material-ui/icons/EventNote';
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
-import ComputerIcon from '@material-ui/icons/Computer';
-import HttpIcon from '@material-ui/icons/Http';
+import Chat from './components/Chat';
+import React from 'react';
 
 
 const theme = createMuiTheme({
@@ -40,7 +35,7 @@ const theme = createMuiTheme({
   },
 });
 
-const styles = makeStyles({
+const useStyles = theme =>({
   wrapper: {
     width: "65%",
     margin: "auto",
@@ -60,28 +55,69 @@ const styles = makeStyles({
   },
 })
 
-function App() {
-  const classes = styles();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleNFTChange = this.handleNFTChange.bind(this);
+    this.handleSwapChange = this.handleSwapChange.bind(this);
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.state = {nftSent: '',
+                  currentUser: null,
+                  swapId: null,
+                  swapUser: null,
+                  swapUser2: null,
+                  sendFunction: null};
+  }
 
-  return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <NavBar/>
-        <div className={classes.wrapper}>
-          <Typography variant="h4" className={classes.bigSpace} color="primary">
-             These are the NFTs linked to your wallet
-          </Typography>
-          <Typography variant="h5" className={classes.littleSpace} color="primary">
-            You can browse these NFTs by clicking on them and selecting which one to trade. The one selected will be displayed by itself and will be tradeable
-          </Typography>
-        </div>
-        <Exchanger />
-        <div className={classes.bigSpace}>
-          <Footer/>
-        </div>
-      </ThemeProvider>
-    </div>
-  );
+  handleNFTChange(nftSentSrc) {
+    this.setState({nftSent: nftSentSrc});
+  }
+
+  handleSwapChange(swapId_, swapUser_, swapUser2_){
+    this.setState({swapId: swapId_,
+                  swapUser: swapUser_,
+                  swapUser2: swapUser2_});
+
+  }
+
+  handleUserChange(user_){
+    this.setState({currentUser: user_});
+  }
+
+  render(){
+    const { classes } = this.props;
+    
+    return (
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <NavBar 
+            onFinalUserChange = {this.handleUserChange}/>
+          <div className={classes.wrapper}>
+            <Typography variant="h4" className={classes.bigSpace} color="primary">
+              These are the NFTs linked to your wallet
+            </Typography>
+            <Typography variant="h5" className={classes.littleSpace} color="primary">
+              You can browse these NFTs by clicking on them and selecting which one to trade. The one selected will be displayed by itself and will be tradeable
+            </Typography>
+          </div>
+          <Exchanger 
+            user = {this.state.currentUser}
+            onNFTChange={this.handleNFTChange}
+            onSwapChange={this.handleSwapChange}/>
+          <div className={classes.bigSpace}>
+            <Chat 
+              nftSrc = {this.state.nftSent}
+              swapId = {this.state.swapId}
+              swapUser = {this.state.currentUser}
+              swapUser2 = {this.state.swapUser2}/>
+          </div>
+          <div className={classes.bigSpace}>
+            <Footer/>
+          </div>
+        </ThemeProvider>
+      </div>
+    );
+  }
 }
 
 /*
@@ -95,5 +131,5 @@ function App() {
           <Grid icon={<ComputerIcon style={{fill: "#E69426", height:"125", width:"125"}}/>}  title="Multi-Platform" btnTitle="Show me More"/>
           <Grid icon={<HttpIcon style={{fill: "#2EA09D", height:"125", width:"125"}}/>} title="Connected" btnTitle="Show me More"/>
         </div>
-        */
-export default App;
+*/
+export default withStyles(useStyles)(App)

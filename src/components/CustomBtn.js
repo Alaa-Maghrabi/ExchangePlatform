@@ -19,6 +19,11 @@ const StyledButton = withStyles({
         "&:hover": {
             backgroundColor:  "#4f25f7"
           },
+        "&:disabled": {
+            background:  "#fff",
+            color: "#ccc",
+            cursor: "no-drop",
+        },
     },
     label: {
       textTransform: 'capitalize',
@@ -27,7 +32,9 @@ const StyledButton = withStyles({
 
 function CustomBtn(props){
     return (
-        <StyledButton onClick={props.onClick} variant="contained">
+        <StyledButton onClick={props.onClick} 
+                      disabled={props.disabled}
+                      variant="contained">
             {props.txt}
         </StyledButton>
     )
