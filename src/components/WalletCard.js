@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React, {useState } from "react"
 import CustomBtn from './CustomBtn';
-import {Typography} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles"; 
 
 const styles = makeStyles({
@@ -39,7 +38,6 @@ const WalletCard = (props) =>{
 
     const classes = styles();
 
-    const [errorMessage, setErrorMessage] = useState(null);
     const [connButtonText, setConnButtonText] = useState('Connect Wallet');
     const [defaultAccount, setDefaultAccount] = useState(null);
 	const [userBalance, setUserBalance] = useState(null);

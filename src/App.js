@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { createMuiTheme, ThemeProvider, withStyles} from '@material-ui/core/styles';
 import NavBar from './components/NavBar';
-import Grid from './components/Grid';
 import {Typography} from '@material-ui/core'
 import Footer from './components/Footer';
 import Exchanger from './components/Exchanger';

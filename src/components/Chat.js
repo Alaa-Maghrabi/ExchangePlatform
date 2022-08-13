@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { Peer } from "peerjs";
 
 class Chat extends React.Component {
@@ -105,10 +105,13 @@ class Chat extends React.Component {
     }
 
     render() {
-        this.state.nftSent = this.props.nftSrc;
-        this.state.swapIdSent = this.props.swapId;
-        this.state.swapUserSent = this.props.swapUser;
-        this.state.swapUser2Sent = this.props.swapUser2;
+        this.setState({
+            nftSent: this.props.nftSrc,
+            swapIdSent: this.props.swapId,
+            swapUserSent: this.props.swapUser,
+            swapUser2Sent: this.props.swapUser2
+        });
+
         return (
             <div className="wrapper">
 

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import "./Exchanger.css";
-import GalleryModal from "./GalleryModal";
 import CustomBtn from './CustomBtn';
 
 const Moralis = require('moralis');
@@ -190,18 +189,18 @@ class Exchanger extends React.Component {
         }
         //await this.approve(nftAddresses[0]);
         let result =  await Moralis.executeFunction(options);
-        let wait_var = await result.wait(1)
-                      .then((res) => {
-                        console.log(result.blockHash);
-                        console.log(res);
-                        this.setState({swapId: parseInt(res.logs[2].topics[3]),
-                                       swapUser: res.logs[2].topics[1],
-                                       swapUser2: res.logs[2].topics[2]});
-                      })
-                      .catch((e) =>{
-                        console.log("FAILED");
-                        console.log(e);
-                      })
+        await result.wait(1)
+              .then((res) => {
+                console.log(result.blockHash);
+                console.log(res);
+                this.setState({swapId: parseInt(res.logs[2].topics[3]),
+                                swapUser: res.logs[2].topics[1],
+                                swapUser2: res.logs[2].topics[2]});
+              })
+              .catch((e) =>{
+                console.log("FAILED");
+                console.log(e);
+              })
         
         
         this.props.onSwapChange(this.state.swapId, this.state.swapUser, this.state.swapUser2);
@@ -288,7 +287,7 @@ class Exchanger extends React.Component {
       }
 
       render(){
-        this.state.currentUser = this.props.user;
+        this.setState({currentUser: this.props.user})
         return ( 
             <div className= "gallery-container">
                 <div className="gallery-grid">
