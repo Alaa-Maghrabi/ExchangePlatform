@@ -137,7 +137,7 @@ class Exchanger extends React.Component {
               "type": "function"
             }],
           params:{
-            operator: "0x02f40094De2Df2a34609897c9D8a364Aa976427d",
+            operator: "0xC72CfA31d4BDe7F44dfb910d9497441db825AE0F",
             approved: true
           },
         }
@@ -149,7 +149,7 @@ class Exchanger extends React.Component {
         await Moralis.enableWeb3();
 
         let options = {
-          contractAddress: "0x02f40094De2Df2a34609897c9D8a364Aa976427d",
+          contractAddress: "0xC72CfA31d4BDe7F44dfb910d9497441db825AE0F",
           functionName:"startExchange",
           abi:[{
               "inputs": [
@@ -210,7 +210,7 @@ class Exchanger extends React.Component {
       async acceptExchange(_swapId, nftAddresses, nftIds){
         await Moralis.enableWeb3();
         let options = {
-          contractAddress: "0x02f40094De2Df2a34609897c9D8a364Aa976427d",
+          contractAddress: "0xC72CfA31d4BDe7F44dfb910d9497441db825AE0F",
           functionName:"acceptExchange",
           abi:[{
               "inputs": [
@@ -264,7 +264,7 @@ class Exchanger extends React.Component {
       async confirmExchange(_swapId){
         await Moralis.enableWeb3();
         let options = {
-          contractAddress: "0x02f40094De2Df2a34609897c9D8a364Aa976427d",
+          contractAddress: "0xC72CfA31d4BDe7F44dfb910d9497441db825AE0F",
           functionName:"confirmExchange",
           abi:[{
               "inputs": [
